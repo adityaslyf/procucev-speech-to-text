@@ -1,0 +1,8 @@
+node_modules
+dist-client
+dist-server
+.env
+.DS_Store
+.wrangler
+.dev.vars
+pnpm-lock.yaml

@@ -1,0 +1,46 @@
+{
+  "name": "procucev-speech-to-text",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Real-time multilingual (Hindi + English) speech to text with transcription history",
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm:dev:server\" \"npm:dev:client\"",
+    "dev:server": "tsx watch server/index.ts",
+    "dev:client": "vite",
+    "build": "vite build && tsc -p tsconfig.server.json",
+    "start": "node dist-server/index.js",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.server.json --noEmit && tsc -p tsconfig.json --noEmit && tsc -p worker/tsconfig.json",
+    "deploy": "vite build && wrangler deploy",
+    "dev:worker": "vite build && wrangler dev"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "pg": "^8.23.1",
+    "ws": "^8.23.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261125.1",
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.11",
+    "@types/pg": "^8.23.1",
+    "@types/react": "^19.3.3",
+    "@types/react-dom": "^19.3.0",
+    "@types/ws": "^8.18.2",
+    "@vitejs/plugin-react": "^6.3.0",
+    "concurrently": "^10.0.7",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.8",
+    "vitest": "^5.1.2",
+    "wrangler": "^4.168.0"
+  }
+}

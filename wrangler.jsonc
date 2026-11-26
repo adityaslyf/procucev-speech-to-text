@@ -1,0 +1,23 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "procucev-speech-to-text",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-11-01",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist-client",
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/api/*", "/ws/*"]
+  },
+  "vars": { "GEMINI_MODEL": "gemini-3.5-transcribe-live" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "procucev-speech-to-text",
+      "database_id": "c765d537-b181-4733-a0d1-52d7e57ca56f",
+      "migrations_dir": "migrations"
+    }
+  ]
+  // Secret (set with `wrangler secret put GEMINI_API_KEY` or in the dashboard): GEMINI_API_KEY
+}
